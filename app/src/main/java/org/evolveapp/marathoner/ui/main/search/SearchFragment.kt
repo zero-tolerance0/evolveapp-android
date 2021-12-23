@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.evolveapp.marathoner.R
 import org.evolveapp.marathoner.databinding.FragmentSearchBinding
+import org.evolveapp.marathoner.ui.main.search.filter.FilterFragment
+import org.evolveapp.marathoner.utils.simulateLoadingData
 
 
 class SearchFragment : Fragment() {
@@ -31,6 +33,18 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initCategoriesUI(getDummyCategories())
+
+        binding?.filter?.setOnClickListener { showFilterBottomSheet() }
+
+
+        simulateLoadingData(
+            shimmerLayout = binding?.shimmerMarathons,
+            content = binding?.content
+        )
+        simulateLoadingData(
+            shimmerLayout = binding?.shimmerCategories,
+            content = binding?.categoriesLayout
+        )
 
     }
 
@@ -65,5 +79,11 @@ class SearchFragment : Fragment() {
         Category("General"),
         Category("Private"),
     )
+
+    private fun showFilterBottomSheet() {
+
+        FilterFragment.newInstance("", "").show(childFragmentManager, "")
+
+    }
 
 }

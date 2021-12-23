@@ -12,14 +12,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:animateLayoutChanges="true"
             android:layout_height="wrap_content"
             android:padding="@dimen/_16sdp">
 
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/marathon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/icon"
                 android:src="@drawable/ic_nav_marathons"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +31,8 @@
                 app:tint="@color/black" />
 
 
-            <ImageView
+            <ImageButton
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:id="@+id/search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,9 +49,10 @@
                 android:id="@+id/profile"
                 android:layout_width="@dimen/_26sdp"
                 android:layout_height="@dimen/_26sdp"
-                app2:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="@dimen/_12sdp"
+                app:cardPreventCornerOverlap="true"
                 app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,11 +61,12 @@
                 app:strokeWidth="2dp">
 
                 <ImageView
+                    android:id="@+id/profilePhoto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_3sdp"
                     android:contentDescription="@string/icon"
-                    android:src="@drawable/dummy_user" />
+                    android:src="@drawable/ic_profile_userpic" />
 
             </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,12 @@
     package="org.evolveapp.marathoner">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".MarathonerApp"
@@ -15,6 +21,34 @@
         android:theme="@style/Theme.Marathoner"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".ui.crop.CropImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.marathon.posts.add.AddPostActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.admin.marathons.create.CreateMarathonActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.admin.marathon.tasks.manage.ManageTaskActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.admin.marathon.tasks.add.AddTaskActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".ui.invite.InviteActivity"
             android:exported="true" />
         <activity
@@ -25,13 +59,13 @@
             android:exported="true" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <service
+            android:name=".services.UpdateUserDataService"
+            android:enabled="true"
+            android:exported="false" />
+        <service android:name=".services.UploadProfilePicService" />
     </application>
 
 </manifest>

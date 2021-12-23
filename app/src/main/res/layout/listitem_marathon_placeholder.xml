@@ -39,7 +39,8 @@
                     android:layout_width="@dimen/_150sdp"
                     android:layout_height="@dimen/_10sdp"
                     app:cardBackgroundColor="@color/colorShimmer"
-                    app:cardCornerRadius="20dp" />
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp" />
 
 
                 <com.google.android.material.card.MaterialCardView
@@ -47,7 +48,8 @@
                     android:layout_height="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_4sdp"
                     app:cardBackgroundColor="@color/colorShimmer"
-                    app:cardCornerRadius="20dp" />
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp" />
 
 
                 <com.google.android.material.card.MaterialCardView
@@ -55,7 +57,8 @@
                     android:layout_height="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_4sdp"
                     app:cardBackgroundColor="@color/colorShimmer"
-                    app:cardCornerRadius="20dp" />
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp" />
 
                 <View
                     android:layout_width="match_parent"

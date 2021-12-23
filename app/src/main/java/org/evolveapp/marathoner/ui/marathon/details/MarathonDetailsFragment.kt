@@ -42,7 +42,7 @@ class MarathonDetailsFragment : Fragment() {
     private fun getTabsList(): List<Tab> {
 
         return listOf(
-            Tab("Timeline", TimelineFragment.newInstance("", "")),
+            Tab("Timeline", TimelineFragment()),
             Tab("Assignments", AssignmentsFragment.newInstance("", "")),
             Tab("Discussion", DiscussionFragment.newInstance("", "")),
             Tab("Files", FilesFragment.newInstance("", "")),

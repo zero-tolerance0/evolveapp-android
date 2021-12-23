@@ -43,4 +43,9 @@
         android:id="@+id/searchFriendsFragment"
         android:name="org.evolveapp.marathoner.ui.main.profile.search.SearchFriendsFragment"
         android:label="SearchFriendsFragment" />
+    <fragment
+        android:id="@+id/guestProfileFragment"
+        android:name="org.evolveapp.marathoner.ui.main.profile.guest.GuestProfileFragment"
+        android:label="fragment_guest_profile"
+        tools:layout="@layout/fragment_guest_profile" />
 </navigation>

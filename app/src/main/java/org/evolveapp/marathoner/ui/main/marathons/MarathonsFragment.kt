@@ -1,6 +1,5 @@
 package org.evolveapp.marathoner.ui.main.marathons
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,8 +29,12 @@ class MarathonsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding?.cardMarathon?.container?.setOnClickListener {
-            startActivity(Intent(requireContext(), MarathonActivity::class.java))
+
+            // FIXME: 10/6/2021
+            MarathonActivity.launch(requireActivity(), "189")
+
         }
 
 

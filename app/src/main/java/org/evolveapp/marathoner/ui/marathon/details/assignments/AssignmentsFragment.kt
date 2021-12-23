@@ -1,11 +1,16 @@
 package org.evolveapp.marathoner.ui.marathon.details.assignments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import org.evolveapp.marathoner.R
+import org.evolveapp.marathoner.databinding.FragmentAssignmentsBinding
+import org.evolveapp.marathoner.ui.admin.marathon.tasks.add.AddTaskActivity
+import org.evolveapp.marathoner.ui.admin.marathon.tasks.manage.ManageTaskActivity
+import org.evolveapp.marathoner.utils.goTo
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +27,8 @@ class AssignmentsFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var binding: FragmentAssignmentsBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +42,21 @@ class AssignmentsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_assignments, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_assignments, container, false)
+
+        return binding?.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding?.cardAddTask?.setOnClickListener {
+            goTo(AddTaskActivity::class.java)
+        }
+
+        binding?.assi1?.cardParent?.setOnClickListener { goTo(ManageTaskActivity::class.java) }
+
     }
 
     companion object {

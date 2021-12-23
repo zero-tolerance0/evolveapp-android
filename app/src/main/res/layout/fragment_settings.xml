@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="org.evolveapp.marathoner.ui.main.profile.settings.SettingsViewModel" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,38 +33,60 @@
                 android:paddingTop="@dimen/_80sdp"
                 android:paddingBottom="@dimen/_24sdp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:layout_gravity="center"
-                    app:cardBackgroundColor="#263366FF"
-                    app:cardCornerRadius="@dimen/_50sdp"
-                    app:cardElevation="0dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        app:cardCornerRadius="@dimen/_50sdp"
+                        app:cardElevation="0dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:contentDescription="@string/icon"
-                            android:src="@drawable/ic_camera"
-                            app:tint="@color/colorPrimary" />
+                            android:src="@drawable/ic_profile_userpic" />
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/addPhoto"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        app:cardBackgroundColor="#80000000"
+                        app:cardCornerRadius="@dimen/_50sdp"
+                        app:cardElevation="0dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:text="добавить\nфото"
+                            android:drawablePadding="@dimen/_4sdp"
+                            android:text="@string/add_nphoto"
                             android:textAlignment="center"
-                            android:textColor="@color/colorPrimary"
-                            android:textStyle="bold" />
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:drawableTopCompat="@drawable/ic_camera" />
 
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <TextView
@@ -63,20 +94,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:text="логин"
+                    android:text="@string/username"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="#26000000" />
 
                 <EditText
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginEnd="@dimen/_16sdp"
                     android:backgroundTint="#EBEBED"
+                    android:hint="@string/username"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:paddingBottom="@dimen/_16sdp"
-                    android:text="Didar"
+                    android:text="@={viewModel.userName}"
                     android:textStyle="bold" />
 
 
@@ -102,18 +135,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="имя"
+                            android:text="@string/first_name"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                             android:textColor="#26000000" />
 
                         <EditText
+                            android:id="@+id/fName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#EBEBED"
+                            android:hint="@string/first_name"
                             android:importantForAutofill="no"
                             android:inputType="text"
                             android:paddingBottom="@dimen/_16sdp"
-                            android:text="Didar"
+                            android:text="@={viewModel.firstName}"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -133,19 +168,21 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Фамилия"
+                            android:text="@string/last_name"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                             android:textColor="#26000000" />
 
 
                         <EditText
+                            android:id="@+id/lName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#EBEBED"
+                            android:hint="@string/last_name"
                             android:importantForAutofill="no"
                             android:inputType="text"
                             android:paddingBottom="@dimen/_16sdp"
-                            android:text="Kam"
+                            android:text="@={viewModel.lastName}"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -158,11 +195,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:text="дата рождения"
+                    android:text="@string/date_of_birth"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="#26000000" />
 
                 <EditText
+                    android:id="@+id/birthday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_16sdp"
@@ -170,10 +208,10 @@
                     android:backgroundTint="#EBEBED"
                     android:clickable="false"
                     android:focusable="false"
+                    android:hint="@string/date_of_birth"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:paddingBottom="@dimen/_16sdp"
-                    android:text="5 марта 1987"
                     android:textStyle="bold" />
 
 
@@ -182,22 +220,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:text="страна"
+                    android:text="@string/country"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="#26000000" />
 
                 <EditText
+                    android:id="@+id/country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginEnd="@dimen/_16sdp"
                     android:backgroundTint="#EBEBED"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:focusable="false"
+                    android:hint="@string/country"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:paddingBottom="@dimen/_16sdp"
-                    android:text="Россия 🇷🇺"
                     android:textStyle="bold" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -207,6 +246,7 @@
                     android:background="?selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
+                    android:onClick="@{()-> viewModel.switchHiddenProfile()}"
                     android:paddingStart="@dimen/_16sdp"
                     android:paddingEnd="@dimen/_16sdp">
 
@@ -214,7 +254,7 @@
                         android:id="@+id/labelHideProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Скрытый профиль"
+                        android:text="@string/hidden_profile"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@id/switchHideProfile"
@@ -225,6 +265,7 @@
                         android:id="@+id/switchHideProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="@{viewModel.hiddenProfile}"
                         android:clickable="false"
                         android:focusable="false"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -235,7 +276,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4sdp"
-                        android:text="Другие пользователи будут видеть только ваши фото и логин"
+                        android:text="@string/other_users_will_only_see_your_photo_and_name"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                         android:textColor="#80000000"
                         app:layout_constraintStart_toStartOf="parent"
@@ -250,146 +291,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_24sdp"
-                    android:text="Ваши соц сети"
+                    android:text="@string/your_social_networks"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="#26000000" />
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/socialNetworks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    android:background="?selectableItemBackground"
-                    android:padding="@dimen/_8sdp"
-                    app:layout_constraintTop_toBottomOf="@id/cardSearch">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/_16sdp"
-                        android:gravity="center"
-                        android:text="Facebook"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:textStyle="bold"
-                        app:drawableStartCompat="@drawable/ic_facebook"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/icon"
-                        android:src="@drawable/ic_round_arrow_forward_ios_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    android:background="?selectableItemBackground"
-                    android:padding="@dimen/_8sdp"
-                    app:layout_constraintTop_toBottomOf="@id/cardSearch">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/_16sdp"
-                        android:gravity="center"
-                        android:text="Twitter"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:textStyle="bold"
-                        app:drawableStartCompat="@drawable/ic_twitter_off"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/icon"
-                        android:src="@drawable/ic_add"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    android:background="?selectableItemBackground"
-                    android:padding="@dimen/_8sdp"
-                    app:layout_constraintTop_toBottomOf="@id/cardSearch">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/_16sdp"
-                        android:gravity="center"
-                        android:text="vkontakte"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:textStyle="bold"
-                        app:drawableStartCompat="@drawable/ic_vk_off"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/icon"
-                        android:src="@drawable/ic_add"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    android:background="?selectableItemBackground"
-                    android:padding="@dimen/_8sdp"
-                    app:layout_constraintTop_toBottomOf="@id/cardSearch">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/_16sdp"
-                        android:gravity="center"
-                        android:text="Google"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:textStyle="bold"
-                        app:drawableStartCompat="@drawable/ic_google_off"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/icon"
-                        android:src="@drawable/ic_add"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
+                    tools:itemCount="4"
+                    tools:listitem="@layout/listitem_social_network" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -397,7 +309,7 @@
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_24sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
-                    android:text="дополнительно"
+                    android:text="@string/additional"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="#26000000" />
 
@@ -408,7 +320,7 @@
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:padding="@dimen/_16sdp"
-                    android:text="Частые вопросы"
+                    android:text="@string/faq"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textStyle="bold"
                     app:drawableEndCompat="@drawable/ic_round_arrow_forward_ios_24"
@@ -429,7 +341,7 @@
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:padding="@dimen/_16sdp"
-                    android:text="Частые вопросы"
+                    android:text="@string/report_a_problem"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textStyle="bold"
                     app:drawableEndCompat="@drawable/ic_round_arrow_forward_ios_24"
@@ -450,7 +362,7 @@
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:padding="@dimen/_16sdp"
-                    android:text="Частые вопросы"
+                    android:text="@string/our_telegram"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textStyle="bold"
                     app:drawableEndCompat="@drawable/ic_round_arrow_forward_ios_24"
@@ -460,16 +372,20 @@
 
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/logout"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:layout_marginEnd="@dimen/_16sdp"
                     android:backgroundTint="#EBEBED"
-                    android:text="выйти из аккаунта"
+                    android:text="@string/log_out"
                     android:textColor="@color/red"
                     android:textStyle="bold"
-                    app:cornerRadius="@dimen/_20sdp" />
+                    app:cornerRadius="@dimen/_20sdp"
+                    app:icon="@drawable/ic_round_logout_24"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/red" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
@@ -482,9 +398,28 @@
             android:layout_margin="@dimen/_16sdp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/icon"
-            android:src="@drawable/ic_close"
+            android:src="@drawable/ic_close_black_circle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:text="@string/save"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <include
+            android:id="@+id/loading"
+            layout="@layout/loading_primary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

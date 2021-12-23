@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import org.evolveapp.marathoner.R
 import java.util.*
 
 // This is general utils (not depending on the project) and can easily implement in other projects
@@ -32,19 +33,13 @@ fun View.gone() {
     visibility = View.GONE
 }
 
-fun Context.goTo(cls: Class<*>, builder: Intent.() -> Unit = {}) {
-
-    val targetIntent = Intent(this, cls).apply(builder)
-
-    startActivity(targetIntent)
-}
-
 fun Activity.goTo(cls: Class<*>, builder: Intent.() -> Unit = {}) {
 
     val targetIntent = Intent(this, cls).apply(builder)
 
     val options = ActivityOptions.makeSceneTransitionAnimation(this)
     startActivity(targetIntent/*, options.toBundle()*/)
+    overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim)
 
 }
 

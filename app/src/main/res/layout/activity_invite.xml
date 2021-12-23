@@ -16,23 +16,24 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/icon"
-                android:src="@drawable/back"
+                android:src="@drawable/ic_back_circle_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <ImageView
-                android:id="@+id/share"
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/icon"
-                android:src="@drawable/share"
+                android:src="@drawable/ic_share_circle_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -89,19 +90,19 @@
                 android:orientation="vertical">
 
 
-                <include layout="@layout/listitem_participant_add_friend" />
+                <include layout="@layout/listitem_marathon_participant" />
 
-                <include layout="@layout/listitem_participant_add_friend" />
+                <include layout="@layout/listitem_marathon_participant" />
 
-                <include layout="@layout/listitem_participant_add_friend" />
+                <include layout="@layout/listitem_marathon_participant" />
 
-                <include layout="@layout/listitem_participant_add_friend" />
+                <include layout="@layout/listitem_marathon_participant" />
 
-                <include layout="@layout/listitem_participant_add_friend" />
+                <include layout="@layout/listitem_marathon_participant" />
 
-                <include layout="@layout/listitem_participant_add_friend" />
+                <include layout="@layout/listitem_marathon_participant" />
 
-                <include layout="@layout/listitem_participant_add_friend" />
+                <include layout="@layout/listitem_marathon_participant" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

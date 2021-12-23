@@ -17,4 +17,10 @@ class InviteActivity : AppCompatActivity() {
         binding.back.setOnClickListener { onBackPressed() }
 
     }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.pop_enter_anim, R.anim.pop_exit_anim)
+    }
+
 }
